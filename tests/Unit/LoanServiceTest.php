@@ -110,7 +110,7 @@ class LoanServiceTest extends TestCase
 
         // Asserting Loan values
         $this->assertDatabaseHas('loans', [
-            'id' => $loan->id,
+            'id' => $loan->loan_id,
             'user_id' => $this->user->id,
             'amount' => 5000,
             'outstanding_amount' => 5000 - 1666,
@@ -122,7 +122,7 @@ class LoanServiceTest extends TestCase
         // Asserting First Scheduled Repayment is Repaid
         $this->assertDatabaseHas('scheduled_repayments', [
             'id' => $scheduledRepaymentOne->id,
-            'loan_id' => $loan->id,
+            'loan_id' => $loan->loan_id,
             'amount' => 1666,
             'outstanding_amount' => 0,
             'currency_code' => $currencyCode,
@@ -142,7 +142,7 @@ class LoanServiceTest extends TestCase
 
         // Asserting Received Repayment
         $this->assertDatabaseHas('received_repayments', [
-            'loan_id' => $loan->id,
+            'loan_id' => $loan->loan_id,
             'amount' => 1666,
             'currency_code' => $currencyCode,
             'received_at' => '2020-02-20',
@@ -192,7 +192,7 @@ class LoanServiceTest extends TestCase
 
         // Asserting Loan values
         $this->assertDatabaseHas('loans', [
-            'id' => $loan->id,
+            'id' => $loan->loan_id,
             'user_id' => $this->user->id,
             'amount' => 5000,
             'outstanding_amount' => 0,
@@ -204,7 +204,7 @@ class LoanServiceTest extends TestCase
         // Asserting Last Scheduled Repayment is Repaid
         $this->assertDatabaseHas('scheduled_repayments', [
             'id' => $scheduledRepaymentThree->id,
-            'loan_id' => $loan->id,
+            'loan_id' => $loan->loan_id,
             'amount' => 1667,
             'outstanding_amount' => 0,
             'currency_code' => $currencyCode,
@@ -214,7 +214,7 @@ class LoanServiceTest extends TestCase
 
         // Asserting Received Repayment
         $this->assertDatabaseHas('received_repayments', [
-            'loan_id' => $loan->id,
+            'loan_id' => $loan->loan_id,
             'amount' => 1667,
             'currency_code' => $currencyCode,
             'received_at' => '2020-04-20',
@@ -263,7 +263,7 @@ class LoanServiceTest extends TestCase
 
         // Asserting Loan values
         $this->assertDatabaseHas('loans', [
-            'id' => $loan->id,
+            'id' => $loan->loan_id,
             'user_id' => $this->user->id,
             'amount' => 5000,
             'outstanding_amount' => 5000 - 2000,
@@ -275,7 +275,7 @@ class LoanServiceTest extends TestCase
         // Asserting First Scheduled Repayment is Repaid
         $this->assertDatabaseHas('scheduled_repayments', [
             'id' => $scheduledRepaymentOne->id,
-            'loan_id' => $loan->id,
+            'loan_id' => $loan->loan_id,
             'amount' => 1666,
             'outstanding_amount' => 0,
             'currency_code' => $currencyCode,
@@ -286,7 +286,7 @@ class LoanServiceTest extends TestCase
         // Asserting Second Scheduled Repayment is Partial
         $this->assertDatabaseHas('scheduled_repayments', [
             'id' => $scheduledRepaymentTwo->id,
-            'loan_id' => $loan->id,
+            'loan_id' => $loan->loan_id,
             'amount' => 1666,
             'outstanding_amount' => 334, // 2000 - 1666 note tagihan kedua amount nya adalah 1666
             'currency_code' => $currencyCode,
@@ -296,7 +296,7 @@ class LoanServiceTest extends TestCase
 
         // Asserting Received Repayment
         $this->assertDatabaseHas('received_repayments', [
-            'loan_id' => $loan->id,
+            'loan_id' => $loan->loan_id,
             'amount' => 2000,
             'currency_code' => $currencyCode,
             'received_at' => '2020-02-20',
